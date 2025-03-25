@@ -1,4 +1,8 @@
-function Component3({ count, setCount }) {
+import { Context } from "../App";
+import { useContext } from "react";
+
+function Component3() {
+  const { count, setCount } = useContext(Context);
   return (
     <div className="component3">
       <h2>Component3</h2>
