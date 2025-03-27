@@ -1,4 +1,4 @@
-import { createContext, useReducer } from "react";
+import { createContext, useEffect, useReducer } from "react";
 
 export const GlobalContext = createContext();
 
@@ -40,6 +40,27 @@ const reducer = (state, action) => {
           }
         }),
       };
+    case "CALCULATE_TOTAL":
+      let { totalAmount, totalPrice } = state.cart.reduce(
+        (acc, curVal) => {
+          const { amount, price } = curVal;
+          const itemTotal = amount * price;
+
+          acc.totalAmount += amount;
+          acc.totalPrice += itemTotal;
+
+          return acc;
+        },
+        {
+          totalPrice: 0,
+          totalAmount: 0,
+        }
+      );
+      return {
+        ...state,
+        totalAmount,
+        totalPrice,
+      };
     default:
       return state;
   }
@@ -47,7 +68,11 @@ const reducer = (state, action) => {
 
 export const GlobalContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  console.log(state);
+
+  useEffect(() => {
+    dispatch({ type: "CALCULATE_TOTAL" });
+  }, [state.cart]);
+
   return (
     <GlobalContext.Provider value={{ ...state, dispatch }}>
       {children}
