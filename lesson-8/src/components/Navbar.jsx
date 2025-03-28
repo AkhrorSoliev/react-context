@@ -31,11 +31,10 @@ function Navbar() {
                         className="hidden-card__item-img"
                       />
                       <div className="hidden-card__item-info">
-                        <h4 className="hidden-card__title">{title}</h4>
-                        <h4 className="hidden-card__price">Price: ${price}</h4>
-                        <p className="hidden-card__amount">
+                        <h4>{title}</h4>
+                        <h3>Price: ${price}</h3>
+                        <p>
                           {amount}x ${price * amount}
-                          <span className="hidden-card__amount-price"></span>
                         </p>
                       </div>
                       <button
