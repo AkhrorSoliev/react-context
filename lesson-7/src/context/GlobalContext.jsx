@@ -40,15 +40,19 @@ const reducer = (state, action) => {
           }
         }),
       };
+    case "CLEAR_CART":
+      return {
+        cart: [],
+        totalPrice: 0,
+        totalAmount: 0,
+      };
     case "CALCULATE_TOTAL":
       let { totalAmount, totalPrice } = state.cart.reduce(
         (acc, curVal) => {
           const { amount, price } = curVal;
           const itemTotal = amount * price;
-
           acc.totalAmount += amount;
           acc.totalPrice += itemTotal;
-
           return acc;
         },
         {

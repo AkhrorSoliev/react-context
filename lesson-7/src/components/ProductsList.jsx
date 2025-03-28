@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { GlobalContext } from "../context/GlobalContext";
 
 function ProductsList({ products }) {
-  const { totalPrice } = useContext(GlobalContext);
+  const { totalPrice, dispatch } = useContext(GlobalContext);
   return (
     <div className="card-container">
       <div className="card-container__header">
@@ -12,7 +12,16 @@ function ProductsList({ products }) {
           <span className="card-container__price">
             Total Price: ${totalPrice}
           </span>
-          <button className="btn card-container__btn">Clear</button>
+          <button
+            onClick={() =>
+              dispatch({
+                type: "CLEAR_CART",
+              })
+            }
+            className="btn card-container__btn"
+          >
+            Clear
+          </button>
         </div>
       </div>
       {products.map((product) => {
