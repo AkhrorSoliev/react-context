@@ -1,11 +1,9 @@
 import { FaShoppingCart, FaTrash } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
-
-import { useContext } from "react";
-import { GlobalContext } from "../context/GlobalContext";
+import { useGlobalContext } from "../hooks/useGlobalContext";
 
 function Navbar() {
-  const { totalAmount, cart, dispatch } = useContext(GlobalContext);
+  const { totalAmount, cart, dispatch } = useGlobalContext();
   return (
     <header>
       <div className="container">

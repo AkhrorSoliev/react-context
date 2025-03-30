@@ -1,9 +1,8 @@
 import { FaShoppingCart } from "react-icons/fa";
-import { useContext } from "react";
-import { GlobalContext } from "../context/GlobalContext";
+import { useGlobalContext } from "../hooks/useGlobalContext";
 
 function Product({ product }) {
-  const { dispatch, cart } = useContext(GlobalContext);
+  const { dispatch, cart } = useGlobalContext();
   const itemInCart = cart.find((item) => item.id == product.id);
   return (
     <div className="card">

@@ -1,9 +1,8 @@
 import Product from "./Product";
-import { useContext } from "react";
-import { GlobalContext } from "../context/GlobalContext";
+import { useGlobalContext } from "../hooks/useGlobalContext";
 
 function ProductsList({ products }) {
-  const { totalPrice, dispatch } = useContext(GlobalContext);
+  const { totalPrice, dispatch } = useGlobalContext();
   return (
     <div className="card-container">
       <div className="card-container__header">
