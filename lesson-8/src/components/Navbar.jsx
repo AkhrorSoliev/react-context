@@ -23,28 +23,25 @@ function Navbar() {
                 cart.map((item) => {
                   const { id, title, price, amount, image } = item;
                   return (
-                    <div className="hidden-card__item">
+                    <div key={id} className="hidden-card__item">
                       <img
                         src={image}
-                        alt="product"
+                        alt={title}
                         width={30}
                         className="hidden-card__item-img"
                       />
                       <div className="hidden-card__item-info">
-                        <h4>{title}</h4>
-                        <h3>Price: ${price}</h3>
-                        <p>
+                        <h4 className="hidden-card__title">{title}</h4>
+                        <h3 className="hidden-card__price">Price: ${price}</h3>
+                        <p className="hidden-card__price ">
                           {amount}x ${price * amount}
                         </p>
                       </div>
                       <button
-                        onClick={() =>
-                          dispatch({
-                            type: "DELETE",
-                            payload: id,
-                          })
-                        }
                         className="btn hidden-card__remove-btn"
+                        onClick={() =>
+                          dispatch({ type: "DELETE", payload: id })
+                        }
                       >
                         <FaTrash />
                       </button>
@@ -57,11 +54,7 @@ function Navbar() {
               {cart.length > 0 && (
                 <div className="hidden-card__card-footer">
                   <button
-                    onClick={() =>
-                      dispatch({
-                        type: "CLEAR_CART",
-                      })
-                    }
+                    onClick={() => dispatch({ type: "CLEAR" })}
                     className="hidden-card__clear-btn"
                   >
                     Clear Cart
