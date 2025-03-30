@@ -15,7 +15,7 @@ function ProductsList({ products }) {
           <button
             onClick={() =>
               dispatch({
-                type: "CLEAR_CART",
+                type: "CLEAR",
               })
             }
             className="btn card-container__btn"

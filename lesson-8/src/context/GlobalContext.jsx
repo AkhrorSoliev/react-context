@@ -40,7 +40,7 @@ const reducer = (state, action) => {
           }
         }),
       };
-    case "CLEAR_CART":
+    case "CLEAR":
       return {
         cart: [],
         totalPrice: 0,
